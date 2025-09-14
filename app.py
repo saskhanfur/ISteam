@@ -68,6 +68,7 @@ with col2:
     else:
         st.info("Enter values and click Calculate to see results")
 
-    st.image("Form2.jpg", caption="I-section", width=550)
+    st.image("Form2.jpg", caption="I-section", width=450)
+
 
 
