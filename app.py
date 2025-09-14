@@ -5,7 +5,7 @@ import numpy as np
 def CalculateMomentWithML(input_list):
     bt, bb, hw, tt, tb, tw = input_list
     area_m2 = (hw*tw + bt*tt + bb*tb) 
-    Weight = area_m2 * 7850  * 5000 * 10e-9
+    Weight = area_m2 * 7850  * 5000 * 1e-9
 
     X_max = [300,300,400,5,5,5]
     X_min = [150,150,250,3.5,3.5,3.5]
@@ -72,3 +72,4 @@ with col2:
         st.info("Enter values and click Calculate to see results")
 
     st.image("Form2.jpg", caption="I-section", use_column_width=True)
+
