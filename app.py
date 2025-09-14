@@ -1,7 +1,6 @@
 import streamlit as st
 import numpy as np
 
-# --- الدالة الأصلية ---
 def CalculateMomentWithML(input_list):
     bt, bb, hw, tt, tb, tw = input_list
     area_m2 = (hw*tw + bt*tt + bb*tb) 
@@ -41,8 +40,6 @@ def CalculateMomentWithML(input_list):
     Moment_normalised = np.matmul(LW2, mid_layer_sigmoid) + b2
     Moment = (Moment_normalised - (-1)) / (1 -(-1)) * (213634.9471958876 - 62055.0401490485) + 62055.0401490485
     return float(Moment), float(Weight)
-
-# --- واجهة Streamlit ---
 st.set_page_config(page_title="I-section Calculator", layout="wide")
 
 st.markdown("<h1 style='text-align:center;'>Simply supported a solid monosymmetric I-section steel beam</h1>", unsafe_allow_html=True)
@@ -51,12 +48,12 @@ col1, col2 = st.columns([1,1])
 
 with col1:
     st.subheader("Geometric Parameters")
-    bt = st.number_input("Top Flange Width (bt) mm", min_value=150.0, max_value=300.0, value=200.0, step=0.1)
-    bb = st.number_input("Bottom Flange Width (bb) mm", min_value=150.0, max_value=300.0, value=200.0, step=0.1)
-    hw = st.number_input("Web Height (hw) mm", min_value=250.0, max_value=400.0, value=300.0, step=0.1)
-    tt = st.number_input("Top Flange Thickness (tt) mm", min_value=3.5, max_value=5.0, value=4.0, step=0.1)
-    tb = st.number_input("Bottom Flange Thickness (tb) mm", min_value=3.5, max_value=5.0, value=4.0, step=0.1)
-    tw = st.number_input("Web Thickness (tw) mm", min_value=3.5, max_value=5.0, value=4.0, step=0.1)
+    bt = st.number_input("Top Flange Width (bt) mm", min_value=150.0, max_value=300.0, value=150.0, step=0.1)
+    bb = st.number_input("Bottom Flange Width (bb) mm", min_value=150.0, max_value=300.0, value=150.0, step=0.1)
+    hw = st.number_input("Web Height (hw) mm", min_value=250.0, max_value=400.0, value=250.0, step=0.1)
+    tt = st.number_input("Top Flange Thickness (tt) mm", min_value=3.5, max_value=5.0, value=3.5, step=0.1)
+    tb = st.number_input("Bottom Flange Thickness (tb) mm", min_value=3.5, max_value=5.0, value=3.5, step=0.1)
+    tw = st.number_input("Web Thickness (tw) mm", min_value=3.5, max_value=5.0, value=3.5, step=0.1)
 
     if st.button("Calculate"):
         moment, weight = CalculateMomentWithML([bt, bb, hw, tt, tb, tw])
@@ -71,5 +68,6 @@ with col2:
     else:
         st.info("Enter values and click Calculate to see results")
 
-    st.image("Form2.jpg", caption="I-section", use_column_width=True)
+    st.image("Form2.jpg", caption="I-section", width=550)
+
 
